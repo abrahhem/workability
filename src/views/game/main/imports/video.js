@@ -4,3 +4,8 @@ export { default as firstQuestionVideo1 } from '../../../includes/videos/firstQu
 export { default as firstQuestionVideo2 } from '../../../includes/videos/firstQuestionVideo2.mp4';
 export { default as firstQuestionVideo3 } from '../../../includes/videos/firstQuestionVideo3.mp4';
 export { default as firstQuestionVideo4 } from '../../../includes/videos/firstQuestionVideo4.mp4';
+export { default as secondQuestionVideo } from '../../../includes/videos/secondQuestion.mp4';
+export { default as secondQuestionVideo1 } from '../../../includes/videos/secondQuestion_op_1_text.mp4';
+export { default as secondQuestionVideo2 } from '../../../includes/videos/secondQuestion_op_2.mp4';
+export { default as secondQuestionVideo3 } from '../../../includes/videos/secondQuestion_op_3.mp4';
+export { default as secondQuestionVideo4 } from '../../../includes/videos/secondQuestion_op_4.mp4';

@@ -12,3 +12,8 @@ export { default as firstQuestionImg1 } from '../../../includes/images/firstQues
 export { default as firstQuestionImg2 } from '../../../includes/images/firstQuestionImg2.png';
 export { default as firstQuestionImg3 } from '../../../includes/images/firstQuestionImg3.png';
 export { default as firstQuestionImg4 } from '../../../includes/images/firstQuestionImg4.png';
+export { default as secondQuestionImg } from '../../../includes/images/secondQuestion.png';
+export { default as secondQuestionImg1 } from '../../../includes/images/secondQuestion_op_1_text.png';
+export { default as secondQuestionImg2 } from '../../../includes/images/secondQuestion_op_2_text.png';
+export { default as secondQuestionImg3 } from '../../../includes/images/secondQuestion_op_3_text.png';
+export { default as secondQuestionImg4 } from '../../../includes/images/secondQuestion_op_4_text.png';

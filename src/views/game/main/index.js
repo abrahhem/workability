@@ -13,11 +13,17 @@ import VideoPlayer from "../../components/videoplayer";
 import GlassyCard from "./components/glassycard";
 import {
     WelcomeImg, Character1, Character2, Character3, Character4, Character5, Character6, Character7, Character8,
-    firstQuestionImg1, firstQuestionImg2, firstQuestionImg3, firstQuestionImg4, firstQuestionImg
+    firstQuestionImg1, firstQuestionImg2, firstQuestionImg3, firstQuestionImg4, firstQuestionImg, secondQuestionImg,
+    secondQuestionImg4, secondQuestionImg1, secondQuestionImg2, secondQuestionImg3
 } from './imports/images';
-import {WelcomeVideo, firstQuestionVideo1, firstQuestionVideo2, firstQuestionVideo3, firstQuestionVideo4, firstQuestionVideo} from './imports/video'
+import {WelcomeVideo, firstQuestionVideo1, firstQuestionVideo2, firstQuestionVideo3, firstQuestionVideo4,
+    firstQuestionVideo, secondQuestionVideo, secondQuestionVideo1, secondQuestionVideo2, secondQuestionVideo3, secondQuestionVideo4
+} from './imports/video'
 import CharacterList from "./components/characterlist";
 import ChoiceList from "./components/choicelist";
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import {Avatar} from "@mui/material";
+import {Link} from "react-router-dom";
 
 
 const characters  = [
@@ -71,13 +77,40 @@ const firstQuestion = [
     {
         src: firstQuestionVideo3,
         img: firstQuestionImg3,
-        abstract: '',
+        abstract: 'ביצוע מפעילויות פנאי והגעה לעבודה בזמן מחר.',
         id: 3
     },
     {
         src: firstQuestionVideo4,
         img: firstQuestionImg4,
-        abstract: '',
+        abstract: 'לוותר על יום העבודה ולהמשיך לישון כי זה כבר מאוחר.',
+        id: 4
+    }
+]
+
+const secondQuestion = [
+    {
+        src: secondQuestionVideo1,
+        img: secondQuestionImg1,
+        abstract: 'המשך למדף שהוקצה לך.',
+        id: 1
+    },
+    {
+        src: secondQuestionVideo2,
+        img: secondQuestionImg2,
+        abstract: 'ליידע את המנהל על הקושי של העובד.',
+        id: 2
+    },
+    {
+        src: secondQuestionVideo3,
+        img: secondQuestionImg3,
+        abstract: 'הצע סיוע לעובד המתקשה.',
+        id: 3
+    },
+    {
+        src: secondQuestionVideo4,
+        img: secondQuestionImg4,
+        abstract: 'הודע לעובד שאתה יכול להתמודד עם המשימה והמשך למדף שהוקצה לך.',
         id: 4
     }
 ]
@@ -85,12 +118,13 @@ const firstQuestion = [
 
 
 
-export default function Test() {
+export default function Main() {
 
     const [activeStep, setActiveStep] = useState(0);
     const [isFinish, setIsFinish] = useState(false);
-    const [character, setCharacter] = useState('״עדיין לא נבחר״');
+    const [selectedCharacter, setCharacter] = useState('״עדיין לא נבחר״');
     const [firstQuestionChoice, setFirstQuestionChoice] = useState(NaN);
+    const [secondQuestionChoice, setSecondQuestionChoice] = useState(NaN);
     const [reachedStep, setReachedStep] = useState(0);
 
     const handleNext = () => {
@@ -132,6 +166,11 @@ export default function Test() {
         setIsFinish(true);
     }
 
+    const handleSelectingQuestion2Choice = (choice) => {
+        setSecondQuestionChoice(choice);
+        setIsFinish(true);
+    }
+
     const steps = [
         {
             title: 'Intro video',
@@ -142,8 +181,8 @@ export default function Test() {
             component: <GlassyCard width='1493px' height='840px'>
                 <Box sx={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-around', flexDirection: 'column', alignItems: 'center'}}>
                     <Typography component='h1' sx={{ direction: 'rtl', color: '#0B4F71', fontFamily: 'Rubik', fontSize: '25px'}}>כעת תבחר את הדמות שתרצה להיות במשחק ולאחר מכן תלחץ על החץ הימיני כדי להמשיך.</Typography>
-                    <Typography component='h2' sx={{ direction: 'rtl', color: '#0B4F71', fontFamily: 'Rubik', fontSize: '15px'}}> הדמות שלך היא {character}</Typography>
-                    <CharacterList characterList={characters} handleSelect={handelSelectingCharacter} selectedCharacter={character}/>
+                    <Typography component='h2' sx={{ direction: 'rtl', color: '#0B4F71', fontFamily: 'Rubik', fontSize: '15px'}}> הדמות שלך היא {selectedCharacter}</Typography>
+                    <CharacterList characterList={characters} handleSelect={handelSelectingCharacter} selectedCharacter={selectedCharacter}/>
                 </Box>
             </GlassyCard>
         },
@@ -156,6 +195,50 @@ export default function Test() {
             title: 'Select Your Path',
             component: <ChoiceList selected={firstQuestionChoice} handleSelect={handleSelectingQuestion1Choice} videos={firstQuestion} title="תלחץ על כל מלבן בכדי לראות את הסרטון, ולאחר צפייה בכל האפשרויות תבחר כיצד אתה היית מתנהג."/>
         },
+        {
+            title: 'Assisting a Struggling Employee',
+            option: 'Taking Initiative at Work',
+            component: <VideoPlayer width='1493px' height='840px' poster={secondQuestionImg} videoSrc={secondQuestionVideo} onVideoEnd={handleVideoEnd}/>
+        },
+        {
+            title: 'Select Your Path',
+            component: <ChoiceList selected={secondQuestionChoice} handleSelect={handleSelectingQuestion2Choice} videos={secondQuestion} title="תלחץ על כל מלבן בכדי לראות את הסרטון, ולאחר צפייה בכל האפשרויות תבחר כיצד אתה היית מתנהג."/>
+        },
+        {
+            title: 'Summary',
+            component: <GlassyCard width='1493px' height='840px'>
+                <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+                    <Avatar
+                        alt={characters.filter(character => character?.name === selectedCharacter)[0]?.name}
+                        src={characters.filter(character => character?.name === selectedCharacter)[0]?.img}
+                        sx={{ width: 80, height: 80, marginBottom: "16px" }}
+                    />
+                    <Typography component="h1" sx={{ direction: "rtl", marginBottom: "16px" }}>
+                        איחרתי לעבודה בגלל שעון מעורר מקולקל. מה לעשות?
+                    </Typography>
+                    <Typography component="h2" sx={{ direction: "rtl", marginBottom: "16px" }}>
+                        התשובה שלך היא: {firstQuestion.filter(op => op.id === firstQuestionChoice)[0]?.abstract}
+                    </Typography>
+                    <Typography component="h1" sx={{ direction: "rtl", marginBottom: "16px" }}>
+                        כאשר נתקלים בעובד מתקשה בעבודה שהתבקש על ידי המנהל לארגן מדף נוסף, מה הפעולה שתנקוט?
+                    </Typography>
+                    <Typography component="h2" sx={{ direction: "rtl", marginBottom: "16px" }}>
+                        התשובה שלך היא: {secondQuestion.filter(op => op.id === secondQuestionChoice)[0]?.abstract}
+                    </Typography>
+
+                    <Link to="/">
+                        <Button
+                            color="inherit"
+                            variant="contained"
+                            sx={{ mr: 1 }}
+                            startIcon={<ExitToAppIcon />}
+                        >
+                            יציאה
+                        </Button>
+                    </Link>
+                </Box>
+            </GlassyCard>
+        }
     ];
 
     return (
@@ -205,16 +288,19 @@ export default function Test() {
                         </Button>
                         <Box sx={{ flex: '1 1 auto' }} />
 
-                        <Button
-                            onClick={handleNext}
-                            disabled={!isFinish}
-                            variant="contained"
-                            size="large"
-                            endIcon={activeStep === steps.length - 1 ? <DoneAllIcon /> : <ArrowForwardIcon />}
-                        >
-                            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                        </Button>
-
+                        {activeStep === steps.length - 1 ?
+                            <></>
+                            :
+                            <Button
+                                onClick={handleNext}
+                                disabled={!isFinish}
+                                variant="contained"
+                                size="large"
+                                endIcon={activeStep === steps.length - 2 ? <DoneAllIcon /> : <ArrowForwardIcon />}
+                            >
+                                {activeStep === steps.length - 2 ? 'Finish' : 'Next'}
+                            </Button>
+                        }
                     </Box>
                 </>
             )}

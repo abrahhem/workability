@@ -3,6 +3,7 @@ import './css/style.css'
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import {Link} from "react-router-dom";
 
 
 
@@ -10,11 +11,7 @@ export default function GameSignIn() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-            remember: data.get('remember')
-        });
+        window.location = "/game";
     };
     return(
         <Box className={'game container'}>
@@ -52,6 +49,9 @@ export default function GameSignIn() {
                 >
                     Start
                 </Button>
+                <Link to="/dashboard">
+                    Go to dashboard
+                </Link>
             </Box>
         </Box>
     );

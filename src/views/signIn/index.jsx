@@ -22,7 +22,7 @@ export default function SignIn() {
             password: data.get('password'),
             remember: data.get('remember')
         });
-        window.location = 'game'
+        window.location = 'dashboard/home'
     };
 
     return (
@@ -80,7 +80,7 @@ export default function SignIn() {
                     </Button>
                     <Grid container>
                         <Grid item>
-                            <Link href="/game" variant="body2">
+                            <Link href="/" variant="body2">
                                 {"Find your dream job"}
                             </Link>
                         </Grid>
