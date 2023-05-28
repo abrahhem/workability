@@ -15,9 +15,9 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<GameSignIn />}/>
-            <Route path="game" element={<Main />}/>
-            <Route path="dashboard" element={<SignIn />}/>
-              <Route path="dashboard/home" element={<DashboardPage />}/>
+            <Route path="/game" element={<Main />}/>
+            <Route path="/dashboard" element={<SignIn />}/>
+              <Route path="/dashboard/home" element={<DashboardPage />}/>
             <Route path="*" element={<div>not found</div>}/>
           </Routes>
         </Router>
