@@ -10,6 +10,8 @@ import workabilityLogo from '../includes/images/workabilityLogo.png';
 import Typography from '@mui/material/Typography';
 import Copyright from '../components/copyRight'
 import './css/style.css'
+import {useNavigate} from "react-router-dom";
+
 
 
 
@@ -22,7 +24,8 @@ export default function SignIn() {
             password: data.get('password'),
             remember: data.get('remember')
         });
-        window.location = 'dashboard/home'
+        const navigate = useNavigate();
+        navigate('/game');
     };
 
     return (
