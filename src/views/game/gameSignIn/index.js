@@ -10,7 +10,6 @@ import {Link} from "react-router-dom";
 export default function GameSignIn() {
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
         window.location = "/game";
     };
     return(
