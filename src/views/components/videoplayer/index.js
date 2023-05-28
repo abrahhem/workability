@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useRef} from 'react';
+import React, {Component } from 'react';
 import { Player, ControlBar, PlayToggle, VolumeMenuButton, BigPlayButton } from 'video-react';
 import Box from '@mui/material/Box';
 import 'video-react/dist/video-react.css';
