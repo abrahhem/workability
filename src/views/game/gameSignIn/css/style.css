@@ -1,0 +1,57 @@
+
+.game h1 {
+    margin: 45px 0 28px 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 128px;
+    letter-spacing: 0.01em;
+    background: linear-gradient(180deg, #1D6F98 0%, #0B4F71 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+
+.game h2 {
+    font-size: 40px;
+    background: linear-gradient(180deg, #1D6F98 0%, #0B4F71 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+
+
+.game.container {
+    display: flex;
+    margin: 38px 68px 38px 68px;
+    justify-content: flex-start;
+    height: inherit;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("../../../includes/images/working_people.png");
+    background-repeat: no-repeat;
+
+}
+
+.game form {
+    width: 45%;
+    height: 400px;
+    padding: 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(126.6deg, rgba(255, 255, 255, 0.12) 28.69%, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(47px);
+    border-radius: 25px;
+}
+
+.game form button:hover {
+    background-color: #ff642f;
+}
+
+.game form input {
+    background: white;
+    border-radius: 4px;
+}
+
